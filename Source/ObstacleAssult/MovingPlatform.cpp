@@ -49,6 +49,8 @@ void AMovingPlatform::MovingPlatform(float DeltaTime)
 void AMovingPlatform::RotatingPlatform(float DeltaTime)
 {
 	// This function is currently empty and can be implemented to handle platform rotation if needed.
+	FRotator RotationToAdd = RotationVelocity * DeltaTime;
+	AddActorLocalRotation(RotationToAdd);
 }
 
 float AMovingPlatform::GetDistanceMoved()
