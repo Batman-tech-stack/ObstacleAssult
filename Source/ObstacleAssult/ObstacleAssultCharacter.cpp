@@ -1,5 +1,8 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
+#include "Kismet/GameplayStatics.h"
+#include "Components/LightComponent.h"
+#include "Components/InputComponent.h"
 #include "ObstacleAssultCharacter.h"
 #include "Engine/LocalPlayer.h"
 #include "Camera/CameraComponent.h"
@@ -11,6 +14,8 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 #include "ObstacleAssult.h"
+
+
 
 AObstacleAssultCharacter::AObstacleAssultCharacter()
 {
@@ -48,6 +53,34 @@ AObstacleAssultCharacter::AObstacleAssultCharacter()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
+}
+
+void AObstacleAssultCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+
+	FString LevelName = UGameplayStatics::GetCurrentLevelName(this);
+
+	bool bTorchLightEnabled = (LevelName == TEXT("MainLevel2"));
+
+	TArray<UActorComponent*> Components;
+	GetComponents(Components);
+
+	for (UActorComponent* Component : Components)
+	{
+		if (!Component)
+		{
+			continue;
+		}
+
+		if (Component->GetName() == TEXT("PointLight"))
+		{
+			if (ULightComponent* LightComponent = Cast<ULightComponent>(Component))
+			{
+				LightComponent->SetVisibility(bTorchLightEnabled);
+			}
+		}
+	}
 }
 
 void AObstacleAssultCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)

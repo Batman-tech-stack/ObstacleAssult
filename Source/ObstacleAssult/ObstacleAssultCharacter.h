@@ -33,6 +33,11 @@ class AObstacleAssultCharacter : public ACharacter
 	
 protected:
 
+	virtual void BeginPlay() override;
+
+    /** Initialize input action bindings */
+    virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
 	/** Jump Input Action */
 	UPROPERTY(EditAnywhere, Category="Input")
 	UInputAction* JumpAction;
@@ -53,11 +58,6 @@ public:
 
 	/** Constructor */
 	AObstacleAssultCharacter();	
-
-protected:
-
-	/** Initialize input action bindings */
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 protected:
 
