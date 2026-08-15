@@ -1,5 +1,6 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
+#include "ObstacleAssultCharacter.h"
 #include "Kismet/GameplayStatics.h"
 #include "Components/LightComponent.h"
 #include "Components/InputComponent.h"
