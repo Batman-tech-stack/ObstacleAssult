@@ -25,6 +25,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "UI")
 	TSubclassOf<class UUserWidget> LevelSelectionWidgetClass;
 
+	UPROPERTY(EditDefaultsOnly, Category = "UI")
+	TSubclassOf<class UUserWidget> ConfirmationDialog;
+
 public:
 
 	UPROPERTY()
@@ -32,4 +35,7 @@ public:
 
 	UPROPERTY()
 	class UMainMenuWidget* LevelSelectionWidget;
+
+	UPROPERTY()
+	class UConfirmationDialog* ConfirmationDialogWidget;
 };

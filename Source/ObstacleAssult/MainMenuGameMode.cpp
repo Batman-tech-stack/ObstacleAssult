@@ -1,4 +1,5 @@
 #include "MainMenuGameMode.h"
+#include "ConfirmationDialog.h"
 #include "MainMenuWidget.h"
 #include "Blueprint/UserWidget.h"
 #include "GameFramework/PlayerController.h"
@@ -44,4 +45,12 @@ void AMainMenuGameMode::BeginPlay()
             }
         }
     }
+
+	ConfirmationDialogWidget = CreateWidget<UConfirmationDialog>(GetWorld(), ConfirmationDialog);
+    ConfirmationDialogWidget->AddToViewport(1);
+
+    if (ConfirmationDialogWidget)
+    {
+        ConfirmationDialogWidget->SetVisibility(ESlateVisibility::Hidden);
+    } 
 }

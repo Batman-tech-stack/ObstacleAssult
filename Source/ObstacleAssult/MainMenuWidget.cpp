@@ -2,8 +2,11 @@
 
 
 #include "MainMenuWidget.h"
+#include "ConfirmationDialog.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "MainMenuGameMode.h"
+
 
 void UMainMenuWidget::NativeConstruct()
 {
@@ -46,7 +49,8 @@ void UMainMenuWidget::StartGame()
 
 void UMainMenuWidget::QuitGame()
 {
-	UKismetSystemLibrary::QuitGame(this, nullptr, EQuitPreference::Quit, true);
+	MainMenuGameMode->ConfirmationDialogWidget->SetVisibility(ESlateVisibility::Visible);
+	SetVisibility(ESlateVisibility::Hidden);
 }
 
 void UMainMenuWidget::BackButton()
