@@ -24,13 +24,18 @@ class OBSTACLEASSULT_API UPauseMenu : public UUserWidget
 	UFUNCTION(BlueprintCallable)
 	void MainMenu();
 
-	UFUNCTION(BlueprintCallable)
-	void QuitGame();
-
 	UPROPERTY()
 	TObjectPtr<AObstacleAssultPlayerController> PlayerController;
 
 protected:
 
 	virtual void NativeConstruct() override;
+
+	UPROPERTY(EditAnywhere, Category = "UI")
+	TSubclassOf<class UUserWidget> ConfirmationDialog;
+
+public:
+
+	UPROPERTY()
+	class UConfirmationDialog* ConfirmationDialogWidget;
 };

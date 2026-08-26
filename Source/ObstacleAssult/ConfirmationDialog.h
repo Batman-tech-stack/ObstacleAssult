@@ -21,10 +21,11 @@ class OBSTACLEASSULT_API UConfirmationDialog : public UUserWidget
 	UPROPERTY()
 	TObjectPtr<AMainMenuGameMode> MainMenuGameMode;
 
+	
+
 protected:
 
 	virtual void NativeConstruct() override;
-
 
 public:
 	UFUNCTION(BlueprintCallable)
@@ -32,4 +33,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void NoButtonClicked();
+
+	UPROPERTY()
+	class UPauseMenu* PauseMenuWidgetInstance;
 };
