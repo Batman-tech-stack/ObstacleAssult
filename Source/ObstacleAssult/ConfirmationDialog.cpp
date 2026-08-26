@@ -11,11 +11,9 @@
 void UConfirmationDialog::NativeConstruct()
 {
 	Super::NativeConstruct();
-	if (MainMenuGameMode)
-	{
-		MainMenuGameMode = Cast<AMainMenuGameMode>(GetWorld()->GetAuthGameMode());
-	}
-	
+
+	MainMenuGameMode = Cast<AMainMenuGameMode>(GetWorld()->GetAuthGameMode());
+
 }
 
 void UConfirmationDialog::YesButtonClicked()
