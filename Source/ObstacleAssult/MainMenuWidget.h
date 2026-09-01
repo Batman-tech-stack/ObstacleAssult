@@ -46,5 +46,10 @@ protected:
 	UPROPERTY()
 	AMainMenuGameMode* MainMenuGameMode;
 
+	UPROPERTY()
+	class UObstacleAssaultGameInstance* ObstacleAssultInstance;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UI")
+	TArray<float> BestTimeWidget = { 0.0f, 0.0f, 0.0f };
 };
 

@@ -14,10 +14,46 @@ class AObstacleAssultGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 
-public:
-	
-	/** Constructor */
+protected:
+
 	AObstacleAssultGameMode();
+
+	virtual void Tick(float DeltaTime) override;
+
+	virtual void BeginPlay() override;
+
+	void StartTimer(float DeltaTime);
+
+	UPROPERTY(EditAnywhere, Category = "UI")
+	TSubclassOf<UUserWidget> TimerWidgets;
+
+	UPROPERTY(EditAnywhere, Category = "UI")
+	TSubclassOf<UUserWidget> LevelCompletedWidget;
+
+	class UTimerWidget* TimerWidget;
+
+	class ULevelCompleted* LevelCompletedWidgetInstance;
+
+	class UObstacleAssaultGameInstance* ObstacleAssultInstance;
+
+public:
+	UPROPERTY(BlueprintReadWrite)
+	int32 Timer = 0;
+
+	int32 BestTime = 0;
+
+	float TimeLimit = 0.0f;
+
+	UPROPERTY()
+	FString CurrentLevel;
+
+	void LevelCompleted();
+
+	void BestScore();
+
+	UPROPERTY()
+	TArray<FString> LevelName;
+
 };
 
 

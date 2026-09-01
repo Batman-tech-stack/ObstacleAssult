@@ -2,6 +2,7 @@
 
 
 #include "MainMenuWidget.h"
+#include "ObstacleAssaultGameInstance.h"
 #include "ConfirmationDialog.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
@@ -13,12 +14,21 @@ void UMainMenuWidget::NativeConstruct()
 	Super::NativeConstruct();
 
 	MainMenuGameMode = Cast<AMainMenuGameMode>(GetWorld()->GetAuthGameMode());
+	ObstacleAssultInstance = Cast<UObstacleAssaultGameInstance>(UGameplayStatics::GetGameInstance(this));
 
 	if (MainMenuGameMode)
 	{
 		MainWidget = MainMenuGameMode->MainMenuWidget;
 
 		LevelSelectionWidget = MainMenuGameMode->LevelSelectionWidget;
+	}
+
+	if (ObstacleAssultInstance)
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			BestTimeWidget[i] = ObstacleAssultInstance->BestTime[i];
+		}
 	}
 }
 

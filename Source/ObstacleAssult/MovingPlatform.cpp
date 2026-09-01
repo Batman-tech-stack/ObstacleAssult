@@ -37,7 +37,6 @@ void AMovingPlatform::MovingPlatform(float DeltaTime)
 	{
 
 		float OverShoot = DistanceMoved - MoveDistance;
-		UE_LOG(LogTemp, Warning, TEXT("Overshoot: %f"), OverShoot);
 		FVector MoveDirection = PlatformVelocity.GetSafeNormal();
 		FVector NewStartLocation = StartLocation + MoveDirection * MoveDistance;
 		StartLocation = NewStartLocation;
