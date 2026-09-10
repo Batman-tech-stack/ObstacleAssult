@@ -30,11 +30,16 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "UI")
 	TSubclassOf<UUserWidget> LevelCompletedWidget;
 
+	UPROPERTY(EditAnywhere, Category = "UI")
+	TSubclassOf<UUserWidget> CountDownWidget;
+
 	class UTimerWidget* TimerWidget;
 
 	class ULevelCompleted* LevelCompletedWidgetInstance;
 
 	class UObstacleAssaultGameInstance* ObstacleAssultInstance;
+
+	class UCountDown* CountDownWidgetInstance;
 
 public:
 	UPROPERTY(BlueprintReadWrite)

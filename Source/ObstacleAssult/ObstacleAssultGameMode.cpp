@@ -1,6 +1,7 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "ObstacleAssultGameMode.h"
+#include "CountDown.h"
 #include "TimerWidget.h"
 #include "LevelCompleted.h"
 #include "ObstacleAssaultGameInstance.h"
@@ -14,6 +15,25 @@ AObstacleAssultGameMode::AObstacleAssultGameMode()
 void AObstacleAssultGameMode::BeginPlay()
 {
 	Super::BeginPlay();
+
+	APlayerController* PlayerController = GetWorld()->GetFirstPlayerController();
+	CountDownWidgetInstance = CreateWidget<UCountDown>(GetWorld(), CountDownWidget);
+
+	if (CountDownWidgetInstance)
+	{
+		CountDownWidgetInstance->AddToViewport(2);
+		CountDownWidgetInstance->SetVisibility(ESlateVisibility::Visible);
+		PlayerController->SetIgnoreMoveInput(true);
+		PlayerController->SetIgnoreLookInput(true);
+
+		PlayerController->bShowMouseCursor = false;
+
+		FInputModeGameOnly InputMode;
+		PlayerController->SetInputMode(InputMode);
+
+		UGameplayStatics::SetGamePaused(GetWorld(), true);
+		
+	}
 
 	TimerWidget = CreateWidget<UTimerWidget>(GetWorld(), TimerWidgets);
 	ObstacleAssultInstance = Cast<UObstacleAssaultGameInstance>(UGameplayStatics::GetGameInstance(this));
