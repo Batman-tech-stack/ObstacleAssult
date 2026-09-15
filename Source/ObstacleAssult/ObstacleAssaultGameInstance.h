@@ -20,4 +20,9 @@ public:
 
 	UPROPERTY()
 	TArray<float> BestTime;
+
+	virtual void Init() override;
+
+	void SaveGame();
+	void LoadGame();
 };

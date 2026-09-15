@@ -111,6 +111,8 @@ void AObstacleAssultGameMode::LevelCompleted()
 		if (CurrentLevel == LevelName[i])
 		{
 			ObstacleAssultInstance->BestTime[i] = BestTime;
+
+			ObstacleAssultInstance->SaveGame();
 		}
 	}
 
