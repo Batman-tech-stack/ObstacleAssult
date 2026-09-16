@@ -25,6 +25,9 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
     int32 CountDownTime = 3;
 
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sound")
+    class USoundBase* BeepSound;
+
 private:
 
     float CurrentCountDownTime = 0.0f;

@@ -11,6 +11,11 @@ void UCountDown::NativeConstruct()
     bCountdownFinished = false;
 
     PlayerController = GetWorld()->GetFirstPlayerController();
+
+    if (BeepSound)
+    {
+        UGameplayStatics::PlaySound2D(this, BeepSound);
+    }
 }
 
 void UCountDown::NativeTick(
@@ -36,8 +41,14 @@ void UCountDown::StartCountDown(float DeltaTime)
 
         if (CurrentCountDownTime >= 1.0f)
         {
+            
             CurrentCountDownTime = 0.0f;
             CountDownTime--;
+
+            if (BeepSound)
+            {
+                UGameplayStatics::PlaySound2D(this, BeepSound);
+            }
 
             // You can update your countdown TextBlock here
             // Example:
